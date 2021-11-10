@@ -73,11 +73,11 @@ void *threadBarbeiro(void *arg) {
       sem_wait(&controle); // Espera o controle
       sem_getvalue(&pagamento, &sval); // Checa se tem clientes na fila de pagamento
       if(sval > 0) {
-        printf(">>> O barbeiro %ld foi para o caixa.\n" , tid);
+        printf("O barbeiro %ld foi para o caixa.\n" , tid);
         sem_post(&entra_caixa); // Vai para o caixa
         sem_post(&controle); // Libera o controle
         sem_wait(&fecha_caixa); // Sai do caixa
-        printf("<<< O barbeiro %ld saiu do caixa.\n", tid);
+        printf("O barbeiro %ld saiu do caixa.\n", tid);
       }
       else {
         sem_post(&controle); // Libera o controle
